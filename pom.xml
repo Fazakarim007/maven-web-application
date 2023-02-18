@@ -103,7 +103,7 @@
 	    <snapshotRepository>
 	      <id>nexus</id>
 	      <name>Facebook Snapshot Nexus Repository </name>
-	      <url>http://3.110.94.43:7070/nexus/repository/facebook-snapshot/</url>
+	      <url>http://3.110.94.43:7070/nexus/repository/facebook-release/</url>
 	    </snapshotRepository>
 	    
 	</distributionManagement>
