@@ -97,13 +97,13 @@
 	    <repository>
 	      <id>nexus</id>
 	      <name>Facebook Releases Nexus Repository</name>
-	      <url>http://65.2.189.129:8081/repository/maven-web-application_Release/</url>
+	      <url>http://3.110.163.7:8081/repository/maven-web-application_Release/</url>
 	    </repository>
 	    
 	    <snapshotRepository>
 	      <id>nexus</id>
 	      <name>Facebook Snapshot Nexus Repository </name>
-	      <url>http://65.2.189.129:8081/repository/maven-web-application_Snapshot/</url>
+	      <url>http://3.110.163.7:8081/repository/maven-web-application_Snapshot/</url>
 	    </snapshotRepository>
 	    
 	</distributionManagement>
