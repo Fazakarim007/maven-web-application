@@ -4,6 +4,8 @@ node{
     echo " The Build Number is : ${env.BUILD_NUMBER}"
     echo " The Job Name is : ${env.JOB_NAME}"
     
+    properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '3', daysToKeepStr: '', numToKeepStr: '3')), pipelineTriggers([githubPush()])])
+    
 //checkout stage
     stage("Checkout Code"){
     git branch: 'main', credentialsId: '3738e079-bce9-46da-9c02-e4ac90d5afe0', url: 'https://github.com/Fazakarim007/maven-web-application.git'
