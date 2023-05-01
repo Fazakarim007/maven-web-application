@@ -1,0 +1,45 @@
+pipeline {
+    agent any
+    tools {
+        maven "maven3.9.1"
+    }
+    stages {
+        stage('Hello') {
+            steps {
+                echo 'Hello World'
+            }
+        }
+        //Get Code from Github Repo
+        stage('Checkout Code') {
+            steps{
+                git branch: 'main', credentialsId: '3738e079-bce9-46da-9c02-e4ac90d5afe0', url: 'https://github.com/Fazakarim007/maven-web-application.git'
+            }
+        }
+//Build the Package
+        stage('Build Package') {
+            steps {
+                sh "mvn clean package"
+            }
+        }
+//Sonarqube Reports Generation
+        stage('Code Coverage') {
+            steps {
+                sh "mvn sonar:sonar"
+            }
+        }
+//Upload Artifact into Nexus Repository
+        stage('Nexus Artifacts') {
+            steps {
+                sh "mvn deploy"
+            }
+        }
+//Rum Application into Tomcat
+        stage('Deploy into Tomcat') {
+            steps {      
+                sshagent(['cc293b24-fe89-4fd6-8552-5c794c7b9293']){
+                sh "scp -o StrictHostKeyChecking=no target/maven-web-application.war ec2-user@65.2.11.20:/opt/apache-tomcat-9.0.74/webapps"
+                }
+            }
+        }    
+    }
+}
